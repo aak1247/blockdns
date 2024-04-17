@@ -1,6 +1,6 @@
 package main
 
-import "blockdns/cmd"
+import "github.com/aak1247/blockdns/cmd"
 
 func main() {
 	// getEnvs()
