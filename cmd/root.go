@@ -11,6 +11,7 @@ import (
 func Execute() {
 	err := execute()
 	if err != nil {
+		fmt.Println("failed: " + err.Error())
 		os.Exit(1)
 	}
 }
@@ -40,11 +41,12 @@ eg: blockdns baidu.com`)
 		cmd = fmt.Sprint("etcdctl del " + convert(path))
 	}
 	// 执行
-	err := exec.Command(cmd).Run()
+	fmt.Println("execute command " + cmd)
+	err := exec.Command("bash", "-c", cmd).Run()
 	if err != nil {
 		return err
 	}
-	fmt.Print("add dns block to etcd success")
+	fmt.Println("add dns block to etcd success")
 	return nil
 }
 
